@@ -21,16 +21,15 @@ const Toggle = () => {
   }
 
   return (
-    <div>
       <div className="toggle box">
         <select onChange={handleSelect}>
           <option value="Ground">Ground</option>
           <option value="Player Inventory">Player Inventory</option>
           <option value="Cabinet">Cabinet</option>
         </select>
+        <input type="text" placeholder="Search" name="" id="" />
         <Component />
       </div>
-    </div>
   );
 };
 

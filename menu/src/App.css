@@ -21,7 +21,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  justify-content: center;
+  gap: 25px;
 }
 .miniBoxes {
   width: 5vw;
@@ -37,17 +38,64 @@ span {
   width: 100%;
 }
 
-
 .layer {
   display: flex;
   gap: 50px;
+}
+
+.lower {
+  align-items: center;
+}
+
+.front,
+.back {
+  height: 27vh;
+}
+.hands {
+  width: 10vw;
 }
 
 .space {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 50px;
+  gap: 25px;
+}
+
+.mainShirt {
+  display: flex;
+  gap: 15px;
+}
+
+.mainPants{
+  display: flex;
+  gap: 15px;
+}
+
+.shirtStorage {
+  background-image: linear-gradient(#0d0f31 1px, transparent 1px),
+    linear-gradient(to right, #0d0f31 1px, #fafafd 1px);
+  background-size: 30px 30px;
+  width: 90px;
+  height: 90px;
+  position: relative;
+  margin-top: 20px;
+}
+
+.pantsStorage {
+  background-image: linear-gradient(#0d0f31 1px, transparent 1px),
+    linear-gradient(to right, #0d0f31 1px, #fafafd 1px);
+  background-size: 30px 30px;
+  width: 90px;
+  height: 60px;
+  margin-top: 20px;
+}
+.pocketsStorage {
+  background-image: linear-gradient(#0d0f31 1px, transparent 1px),
+    linear-gradient(to right, #0d0f31 1px, #fafafd 1px);
+  background-size: 30px 30px;
+  width: 240px;
+  height: 150px;
 }
 
 .toggle {
@@ -59,19 +107,25 @@ span {
   opacity: 0.8;
   background-image: linear-gradient(#0d0f31 1px, transparent 1px),
     linear-gradient(to right, #0d0f31 1px, #f9f9f9 1px);
-  background-size: 40px 40px;
+  background-size: 30px 30px;
   min-height: 97%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.groundItems{
+  width: 89px;
+  height: 89px;
+  background-color: #0d0f31;
+  border: 1px solid white;
 }
 
 .cabinet {
   opacity: 0.8;
   background-image: linear-gradient(#0d0f31 1px, transparent 1px),
     linear-gradient(to right, #0d0f31 1px, #fafafd 1px);
-  background-size: 40px 40px;
+  background-size: 30px 30px;
   min-height: 97%;
 }
 
-.pockets{
-  width: 15vw;
-  height: 20vh ;
-}
+
