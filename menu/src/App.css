@@ -14,10 +14,10 @@
   border: 2px solid white;
   width: 33vw;
   height: 98vh;
-  background-color: rgb(100, 105, 105);
+  background-color: #2B2B2B;
 }
 
-.player {
+.gear {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +27,7 @@
 .miniBoxes {
   width: 5vw;
   height: 12vh;
-  background-color: white;
+  background-color: #808080;
   border: 2px solid black;
 }
 
@@ -55,12 +55,17 @@ span {
   width: 10vw;
 }
 
-.space {
+.inventory {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 25px;
 }
+
+/* .slots{
+  margin-left: 25px;
+  margin-top: 50px;
+} */
 
 .mainShirt {
   display: flex;
@@ -98,13 +103,12 @@ span {
   height: 150px;
 }
 
-.toggle {
+.storage {
   overflow: auto;
 }
 
 .ground {
   background-color: #f9f9f9;
-  opacity: 0.8;
   background-image: linear-gradient(#0d0f31 1px, transparent 1px),
     linear-gradient(to right, #0d0f31 1px, #f9f9f9 1px);
   background-size: 30px 30px;

@@ -1,8 +1,8 @@
 import "../App.css";
 
-const Player = () => {
+const Gear = () => {
   return (
-    <div className="player box">
+    <div className="gear box">
       <div className="headwear miniBoxes">
         <span>Headwear</span>
       </div>
@@ -51,4 +51,4 @@ const Player = () => {
   );
 };
 
-export default Player;
+export default Gear;

@@ -4,7 +4,7 @@ import Ground from "./ToggleComponents/Ground";
 import PlayerInventory from "./ToggleComponents/PlayerInventory";
 import Cabinet from "./ToggleComponents/Cabinet";
 
-const Toggle = () => {
+const Storage = () => {
   const [option, setOption] = useState("Ground");
 
   const handleSelect = (e) => {
@@ -21,16 +21,16 @@ const Toggle = () => {
   }
 
   return (
-      <div className="toggle box">
+      <div className="storage box">
         <select onChange={handleSelect}>
           <option value="Ground">Ground</option>
           <option value="Player Inventory">Player Inventory</option>
           <option value="Cabinet">Cabinet</option>
         </select>
-        <input type="text" placeholder="Search" name="" id="" />
+        {option === "Player Inventory" ? <input type="text" placeholder="Search" name="" id="" /> : null}
         <Component />
       </div>
   );
 };
 
-export default Toggle;
+export default Storage;

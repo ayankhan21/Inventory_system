@@ -1,12 +1,12 @@
 import "./App.css";
-import Player from "./Components/Player";
-import Space from "./Components/Space";
-import Toggle from "./Components/Toggle";
+import Gear from "./Components/Gear";
+import Inventory from "./Components/Inventory";
+import Toggle from "./Components/Storage";
 function App() {
   return (
     <div className="menu">
-      <Player />
-      <Space />
+      <Gear/>
+      <Inventory/>
       <Toggle/>
     </div>
   );

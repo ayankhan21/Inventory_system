@@ -1,13 +1,13 @@
 import React from "react";
-import Player from "../Player";
-import Space from "../Space";
 import '../../App.css'
+import Gear from "../Gear";
+import Inventory from "../Inventory";
 
 const PlayerInventory = () => {
   return (
     <div>
-      <Player/>
-      <Space/>
+      <Gear/>
+      <Inventory/>
     </div>
   );
 };

@@ -1,10 +1,13 @@
 import "../App.css";
-const Space = () => {
+import Icon from '@mdi/react';
+import { mdiMenuLeft } from '@mdi/js';
+
+const Inventory = () => {
   return (
-    <div className="space box">
+    <div className="inventory box">
       <div className="mainShirt">
         <div className="shirt miniBoxes">
-          <span>Shirt</span>
+          <span>Shirt<Icon path={mdiMenuLeft} size={1} /></span>
         </div>
         <div className="shirtStorage"></div>
       </div>
@@ -29,4 +32,4 @@ const Space = () => {
   );
 };
 
-export default Space;
+export default Inventory;
