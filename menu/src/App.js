@@ -4,10 +4,10 @@ import axios from 'axios'
 import Gear from "./Components/Gear";
 import Inventory from "./Components/Inventory";
 import Toggle from "./Components/Storage";
-import PlayerInventory from "./Dataset";
+import dummyPlayerInventory, { ItemBaseData } from "./dummydata";
 function App() {
-  const [playerData, setPlayerData] = useState(PlayerInventory);
-  
+  const [playerData, setPlayerData] = useState(dummyPlayerInventory);
+  // const [itemBaseData,setItemBaseData] = useState(itemBaseData)
   // useEffect(() => {
   //   axios.get('/your-endpoint')
   //     .then(response => {
@@ -20,12 +20,12 @@ function App() {
   // useEffect(()=>{
   //   setPlayerInventory(PlayerInventory)
   // },[])
-  // console.log(playerData)
+  // console.log(ItemBaseData)
   return (
     <div className="menu">
       <Gear data = {playerData}/>
       <Inventory data = {playerData}/>
-      <Toggle/>
+      <Toggle data = {ItemBaseData}/>
     </div>
   );
 }

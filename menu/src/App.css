@@ -132,6 +132,7 @@ span {
   min-height: 97%;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .groundItems{
@@ -139,6 +140,7 @@ span {
   height: 89px;
   background-color: #0d0f31;
   border: 1px solid white;
+  color: #f9f9f9;
 }
 
 .cabinet {
