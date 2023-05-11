@@ -5,9 +5,9 @@ import Inventory from "../Inventory";
 
 const PlayerInventory = () => {
   return (
-    <div>
-      <Gear/>
-      <Inventory/>
+    <div className="playerInventory">
+      <Gear className="toggleGear"/>
+      <Inventory className="toggleInventory"/>
     </div>
   );
 };

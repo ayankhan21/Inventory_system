@@ -5,7 +5,7 @@ import PlayerInventory from "./ToggleComponents/PlayerInventory";
 import Cabinet from "./ToggleComponents/Cabinet";
 
 const Storage = () => {
-  const [option, setOption] = useState("Ground");
+  const [option, setOption] = useState("Player Inventory");
 
   const handleSelect = (e) => {
     setOption(e.target.value);

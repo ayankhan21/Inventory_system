@@ -16,6 +16,13 @@
   height: 98vh;
   background-color: #2B2B2B;
 }
+.items{
+  width: 60px;
+  height: 60px;
+  border: 1px solid white;
+  background-color: #0d0f31;
+  color: #f9f9f9;
+}
 
 .gear {
   display: flex;
@@ -62,19 +69,29 @@ span {
   gap: 25px;
 }
 
-/* .slots{
-  margin-left: 25px;
-  margin-top: 50px;
-} */
-
 .mainShirt {
   display: flex;
   gap: 15px;
+  margin-left: 30px;
+  margin-top: 25px;
 }
 
 .mainPants{
   display: flex;
   gap: 15px;
+  margin-left: 30px;
+}
+
+.bag{
+  margin-left: 30px;
+}
+
+.vest{
+  margin-left: 30px;
+}
+
+.pockets{
+  margin-left: 30px;
 }
 
 .shirtStorage {
@@ -132,4 +149,8 @@ span {
   min-height: 97%;
 }
 
+.toggleGear , .toggleInventory{
+  width: 33%;
+  overflow-x: hidden;
+}
 
