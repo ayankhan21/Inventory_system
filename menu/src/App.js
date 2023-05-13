@@ -7,20 +7,6 @@ import Toggle from "./Components/Storage";
 import dummyPlayerInventory, { ItemBaseData } from "./dummydata";
 function App() {
   const [playerData, setPlayerData] = useState(dummyPlayerInventory);
-  // const [itemBaseData,setItemBaseData] = useState(itemBaseData)
-  // useEffect(() => {
-  //   axios.get('/your-endpoint')
-  //     .then(response => {
-  //       setPlayerInventory(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // }, []); 
-  // useEffect(()=>{
-  //   setPlayerInventory(PlayerInventory)
-  // },[])
-  // console.log(ItemBaseData)
   return (
     <div className="menu">
       <Gear data = {playerData}/>

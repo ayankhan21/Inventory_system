@@ -22,7 +22,7 @@ const Storage = () => {
 
   return (
       <div className="storage box">
-        <select onChange={handleSelect}>
+        <select style={{position:'sticky'}} onChange={handleSelect}>
           <option value="Ground">Ground</option>
           <option value="Player Inventory">Player Inventory</option>
           <option value="Cabinet">Cabinet</option>

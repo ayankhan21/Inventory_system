@@ -1,16 +1,18 @@
 import {useState } from "react";
 import "../App.css";
 import ContextMenu from "./ContextMenu";
+import { useSelector } from "react-redux";
 
 
 const Gear = (props) => {
+  const inventoryState = useSelector(state => state.inventoryState);
+  console.log(inventoryState)
   const [gearData, setGearData] = useState(props.data);
   return (
     <div className="gear box">
       <div draggable className="headwear miniBoxes">
         <span>Headwear</span>
-        {gearData && gearData.headwear.name}
-        {/* <ContextMenu data={gearData.headwear.}/> */}
+        <p>{gearData && gearData.headwear.name}</p>
       </div>
       <div draggable className="layer">
         <div className="earwear miniBoxes">
@@ -53,15 +55,18 @@ const Gear = (props) => {
       <div className="layer lower">
         <div draggable className="front miniBoxes">
           <span>Front</span>
-          {gearData && gearData.front.name}
+          <p>{gearData && gearData.front.name}</p>
         </div>
         <div draggable className="hands miniBoxes">
           <span>Hands</span>
           {gearData && gearData.hands.name}
+          {gearData && gearData.hands.metadata.toppings.map((e)=>{
+            return <p>{e}</p>
+          })}
         </div>
         <div draggable className="back miniBoxes">
           <span>Back</span>
-          {gearData && gearData.back.name}
+          <p>{gearData && gearData.back.name}</p>
         </div>
       </div>
     </div>

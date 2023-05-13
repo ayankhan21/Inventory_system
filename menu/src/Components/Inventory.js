@@ -5,29 +5,43 @@ import { useState } from "react";
 
 const Inventory = (props) => {
   const [inventoryData, setInventoryData] = useState(props.data);
-  // console.log(inventoryData.shirt.inventory)
+  const [visibleItem, setVisibleItem] = useState(null);
+
+const toggleVisibility = (itemName) => {
+  if (visibleItem === itemName) {
+    setVisibleItem(null);
+  } else {
+    setVisibleItem(itemName);
+  }
+};
   return (
     <div className="inventory box">
       <div className="mainShirt">
-        <div draggable className="shirt miniBoxes">
-          <span>
-            Shirt
-            <Icon path={mdiMenuLeft} size={1} />
-          </span>
-          {inventoryData && inventoryData.shirt.name}
-        </div>
-        <div className="shirtStorage">
-          {inventoryData && inventoryData.shirt.inventory[0].item.name}
-        </div>
+      <div
+        draggable
+        className="shirt miniBoxes"
+        onDoubleClick={() => toggleVisibility("shirt")}
+      >
+        <span>Shirt</span>
+        {inventoryData && inventoryData.shirt.name}
       </div>
-      <div className="mainPants">
-        <div draggable className="pants miniBoxes">
-          <span>Pants</span>
-          {inventoryData && inventoryData.pants.name}
-        </div>
-        <div className="pantsStorage"></div>
+      <div hidden={visibleItem !== "shirt"} className="shirtStorage">
+        {inventoryData && inventoryData.shirt.inventory[0].item.name}
       </div>
-
+    </div>
+    <div className="mainPants">
+      <div
+        draggable
+        className="pants miniBoxes"
+        onDoubleClick={() => toggleVisibility("pants")}
+      >
+        <span>Pants</span>
+        {inventoryData && inventoryData.pants.name}
+      </div>
+      <div hidden={visibleItem !== "pants"} className="pantsStorage">
+        {inventoryData && inventoryData.pants.inventory[0].item.name}
+      </div>
+    </div>
       <div draggable className="bag miniBoxes">
         <span>Bag</span>
         {inventoryData && inventoryData.bag.name}
