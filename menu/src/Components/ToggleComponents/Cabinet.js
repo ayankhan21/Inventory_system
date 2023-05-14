@@ -1,11 +1,11 @@
 import '../../App.css'
 
-const Cabinet = () => {
+const Furniture = () => {
   return (
     <div className='cabinet'>
-      <h1>Cabinet</h1>
+      <h1>Furniture</h1>
     </div>
   );
 };
 
-export default Cabinet;
+export default Furniture;

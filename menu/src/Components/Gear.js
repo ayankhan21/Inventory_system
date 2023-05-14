@@ -1,4 +1,4 @@
-import {useState } from "react";
+import {useState} from "react";
 import "../App.css";
 import ContextMenu from "./ContextMenu";
 import { useSelector } from "react-redux";
@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const Gear = (props) => {
   const inventoryState = useSelector(state => state.inventoryState);
-  console.log(inventoryState)
+  // console.log(inventoryState)
   const [gearData, setGearData] = useState(props.data);
   return (
     <div className="gear box">

@@ -1,6 +1,6 @@
 import "../App.css";
-import Icon from "@mdi/react";
-import { mdiMenuLeft } from "@mdi/js";
+// import Icon from "@mdi/react";
+// import { mdiMenuLeft } from "@mdi/js";
 import { useState } from "react";
 
 const Inventory = (props) => {

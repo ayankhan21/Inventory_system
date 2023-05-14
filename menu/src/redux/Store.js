@@ -1,4 +1,4 @@
-import inventoryReducer from './redux/InventoryReducer'
+import inventoryReducer from './InventoryReducer'
 import {configureStore} from '@reduxjs/toolkit'
 
 const store = configureStore({

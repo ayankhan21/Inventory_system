@@ -1,6 +1,6 @@
 import { useEffect , useState} from "react";
 import "./App.css";
-import axios from 'axios'
+// import axios from 'axios'
 import Gear from "./Components/Gear";
 import Inventory from "./Components/Inventory";
 import Toggle from "./Components/Storage";
