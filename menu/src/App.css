@@ -36,11 +36,10 @@
   height: 110px;
   background-color: #808080;
   border: 2px solid black;
+  /* box-shadow: 0 0 4px red; */
 }
 
-.ContainerStorage{
-  display: hidden;
-}
+
 
 span {
   display: block;
@@ -90,6 +89,17 @@ span {
   margin-left: 30px;
 }
 
+.mainBag{
+  display: flex;
+  gap: 15px;
+  /* margin-left: 30px; */
+}
+
+.mainVest{
+  display: flex;
+  gap: 15px;
+}
+
 .bag{
   margin-left: 30px;
 }
@@ -120,6 +130,25 @@ span {
   height: 60px;
   margin-top: 20px;
 }
+
+.bagStorage{
+  background-image: linear-gradient(#0d0f31 1px, transparent 1px),
+  linear-gradient(to right, #0d0f31 1px, #fafafd 1px);
+background-size: 30px 30px;
+width: 120px;
+height: 90px;
+margin-top: 20px;
+}
+
+.vestStorage{
+  background-image: linear-gradient(#0d0f31 1px, transparent 1px),
+  linear-gradient(to right, #0d0f31 1px, #fafafd 1px);
+background-size: 30px 30px;
+width: 120px;
+height: 90px;
+margin-top: 20px;
+}
+
 .pocketsStorage {
   background-image: linear-gradient(#0d0f31 1px, transparent 1px),
     linear-gradient(to right, #0d0f31 1px, #fafafd 1px);

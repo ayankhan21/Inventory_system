@@ -1,17 +1,18 @@
 import { useEffect , useState} from "react";
 import "./App.css";
-// import axios from 'axios'
+import axios from 'axios'
 import Gear from "./Components/Gear";
 import Inventory from "./Components/Inventory";
 import Toggle from "./Components/Storage";
-import dummyPlayerInventory, { ItemBaseData } from "./dummydata";
+import { useSelector } from "react-redux";
 function App() {
-  const [playerData, setPlayerData] = useState(dummyPlayerInventory);
+  const playerInventory = useSelector(state => state.inventory.inventoryState);
+  const otherData = useSelector(state => state.inventory.ground)
   return (
     <div className="menu">
-      <Gear data = {playerData}/>
-      <Inventory data = {playerData}/>
-      <Toggle data = {ItemBaseData}/>
+      <Gear data = {playerInventory}/>
+      <Inventory data = {playerInventory}/>
+      <Toggle data = {otherData}/>
     </div>
   );
 }

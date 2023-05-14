@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../App.css";
 import Ground from "./ToggleComponents/Ground";
 import PlayerInventory from "./ToggleComponents/PlayerInventory";
-import Furniture from "./ToggleComponents/Cabinet";
+import Furniture from "./ToggleComponents/Furniture";
 
 const Storage = () => {
   const [option, setOption] = useState("Player Inventory");
