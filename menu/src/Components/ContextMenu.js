@@ -1,46 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import '../App.css'
+import { useSelector } from 'react-redux';
+
 
 const ContextMenu = (props) => {
-  const [contextData,setContextData] = useState(props.data)
-  console.log(contextData)
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const [search, setSearch] = useState(false);
+  const inventoryData = useSelector(state => state.inventory.inventoryState);
+  const contextData = inventoryData[props.data];
+  console.log(contextData);
+  
+  useEffect(() => {
+    if (contextData && contextData.hasOwnProperty('inventory')) {
+      setSearch(true);
+    } else {
+      setSearch(false);
+    }
+  }, [contextData]);
+  
   return (
     <div>
-      <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        Dashboard
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
+      <p>{contextData && contextData.name}</p>
+      {search && <input type='text' />}
     </div>
-  )
+  );
+  
 }
 
 export default ContextMenu

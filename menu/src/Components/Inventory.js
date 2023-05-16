@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import Icon from "@mdi/react";
 import { mdiMenuLeft } from "@mdi/js";
 import { useState } from "react";
+import ContextMenu from "./ContextMenu";
 
 const Inventory = (props) => {
   const [inventoryData, setInventoryData] = useState(props.data);
@@ -18,67 +19,83 @@ const Inventory = (props) => {
   return (
     <div className="inventory box">
       <div className="mainShirt">
-        <div
-          draggable
-          className="shirt miniBoxes"
-          onClick={() => toggleVisibility("shirt")}
-        >
-          <span>Shirt</span>
+        <div draggable className="shirt miniBoxes">
+          <span onClick={() => toggleVisibility("shirt")}>Shirt</span>
           {inventoryData && inventoryData.shirt.name}
         </div>
         <div hidden={visibleItem !== "shirt"} className="shirtStorage">
-        {inventoryData &&
-            inventoryData.shirt.inventory.map((e, index) => {
-              return <p key={index}>{e.item.name}</p>;
-            })}
+          <div className="shirtItems">
+            <div>
+              {inventoryData &&
+                inventoryData.shirt.inventory.map((e, index) => {
+                  return (
+                    <p draggable className="items" key={index}>
+                      {e.item.name}
+                    </p>
+                  );
+                })}
+            </div>
+            <ContextMenu data={"shirt"} />
+          </div>
         </div>
       </div>
       <div className="mainPants">
-        <div
-          draggable
-          className="pants miniBoxes"
-          onClick={() => toggleVisibility("pants")}
-        >
-          <span>Pants</span>
+        <div draggable className="pants miniBoxes">
+          <span onClick={() => toggleVisibility("pants")}>Pants</span>
           {inventoryData && inventoryData.pants.name}
         </div>
         <div hidden={visibleItem !== "pants"} className="pantsStorage">
-        {inventoryData &&
-            inventoryData.pants.inventory.map((e, index) => {
-              return <p key={index}>{e.item.name}</p>;
-            })}
+          <div className="pantItems">
+            {inventoryData &&
+              inventoryData.pants.inventory.map((e, index) => {
+                return (
+                  <p draggable className="items" key={index}>
+                    {e.item.name}
+                  </p>
+                );
+              })}
+          </div>
+          <ContextMenu data={"pants"} />
         </div>
       </div>
       <div className="mainBag">
-        <div
-          draggable
-          className="bag miniBoxes"
-          onClick={() => toggleVisibility("bag")}
-        >
-          <span>Bag</span>
+        <div draggable className="bag miniBoxes">
+          <span onClick={() => toggleVisibility("bag")}>Bag</span>
           {inventoryData && inventoryData.bag.name}
         </div>
         <div hidden={visibleItem !== "bag"} className="bagStorage">
-          {inventoryData &&
-            inventoryData.bag.inventory.map((e, index) => {
-              return <p key={index}>{e.item.name}</p>;
-            })}
+          <div className="bagItems">
+            {inventoryData &&
+              inventoryData.bag.inventory.map((e, index) => {
+                return (
+                  <p draggable className="items" key={index}>
+                    {e.item.name}
+                  </p>
+                );
+              })}
+          </div>
         </div>
       </div>
       <div className="mainVest">
-        <div draggable className="vest miniBoxes" onClick={() => toggleVisibility("vest")}>
-          <span>Vest</span>
+        <div draggable className="vest miniBoxes">
+          <span onClick={() => toggleVisibility("vest")}>Vest</span>
           {inventoryData && inventoryData.vest.name}
         </div>
         <div hidden={visibleItem !== "vest"} className="vestStorage">
-          {inventoryData &&
-            inventoryData.vest.inventory.map((e, index) => {
-              return <p key={index}>{e.item.name}</p>;
-            })}
+          <div className="vestItems">
+            {inventoryData &&
+              inventoryData.vest.inventory.map((e, index) => {
+                return (
+                  <p draggable className="items" key={index}>
+                    {e.item.name}
+                  </p>
+                );
+              })}
+          </div>
         </div>
       </div>
 
-      <div draggable className="pockets miniBoxes">
+      <div draggable className="pockets">
         <span>Pockets</span>
         <div className="pocketsStorage">
           {inventoryData &&

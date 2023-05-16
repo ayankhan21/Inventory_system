@@ -4,17 +4,26 @@ import { useDispatch } from "react-redux";
 import ContextMenu from "./ContextMenu";
 
 const Gear = (props) => {
+  const [preview,setPreview] = useState(false)
+
+  // const handlePreview = (event) = >{
+
+  // }
+
   const [gearData, setGearData] = useState(props.data);
   return (
     <div className="gear box">
-      <div draggable className="headwear miniBoxes">
+      <div draggable className="headwear miniBoxes">      
         <span>Headwear</span>
         <p>{gearData && gearData.headwear.name}</p>
+        {/* <ContextMenu data={gearData}/> */}
       </div>
       <div draggable className="layer">
         <div className="earwear miniBoxes">
           <span>Earwear</span>
           {gearData && gearData.earwear.name}
+        {/* <ContextMenu data={gearData}/> */}
+          
         </div>
         <div draggable className="mask miniBoxes">
           <span>Mask</span>
