@@ -151,6 +151,293 @@ const ItemBaseData = {
   },
 };
 
+const dummyPlayerInventory = {
+  shirt: {
+    id: 754788993,
+    name: 'CLOTHING_SUITSHIRT',
+    clothingData: {
+      type: 0,
+      component: 1,
+      drawable: 128,
+      texture: 0,
+    },
+    inventory: [
+      {
+        slot: 0,
+        item: {
+          id: 32356433567,
+          name: 'paperbag',
+          inventory: [
+            {
+              slot: 0,
+              item: {
+                id: 65877939030,
+                name: 'banana',
+                metadata: {},
+                rotated: false,
+              },
+            },
+          ],
+          metadata: {},
+          rotated: false,
+        },
+      },
+
+      
+    ],
+    metadata: { wet: false },
+  },
+  pants: {
+    id: 231212678,
+    name: 'CLOTHING_JEANPANTS',
+    clothingData: {
+      type: 0,
+      component: 1,
+      drawable: 2,
+      texture: 7,
+    },
+    inventory: [
+      {
+        slot: 0,
+        item: {
+          id: 65877939030,
+          name: 'WEAPON_PISTOL',
+          attachments: {},
+          metadata: {},
+          rotated: false,
+        },
+      },
+    ],
+    metadata: {},
+  },
+  bag: {
+    id: 7854545765,
+    name: 'CLOTHING_DUFFELBAG',
+    clothingData: {
+      type: 0,
+      component: 2,
+      drawable: 23,
+      texture: 0,
+    },
+    inventory: [
+      {
+        slot: 2,
+        item: {
+          id: 765885656,
+          name: 'WEAPON_BROKENBOTTLE',
+          attachments: {},
+          metadata: { durability: 10 },
+          rotated: true,
+        },
+      },
+      {
+        slot: 8,
+        item: {
+          id: 758954321,
+          name: 'beerbottle',
+          description: 'A bottle that tastes like beer',
+          metadata: {},
+          rotated: true,
+        },
+      },
+      {
+        slot: 11,
+        item: {
+          id: 31231554,
+          name: 'waterbottle',
+          label: 'Deep Blue Water Bottle',
+          metadata: {},
+          rotated: false,
+        },
+      },
+      {
+        slot: 12,
+        item: {
+          id: 323136678,
+          name: 'CLOTHING_SUITSHIRT',
+          clothingData: {
+            type: 0,
+            component: 1,
+            drawable: 128,
+            texture: 0,
+          },
+          inventory: [],
+          metadata: {},
+        },
+      }
+    ],
+    metadata: {},
+  },
+  vest: {
+    id: 766565900,
+    name: 'CLOTHING_POLICEVEST',
+    clothingData: {
+      type: 0,
+      component: 3,
+      drawable: 63,
+      texture: 3,
+    },
+    inventory: [
+      {
+        slot: 0,
+        item: {
+          id: 31276454,
+          name: 'AMMO_RIFLE',
+          metadata: { bulletCount: 30 },
+          rotated: false,
+        },
+      },
+      {
+        slot: 1,
+        item: {
+          id: 758954321,
+          name: 'AMMO_RIFLE',
+          metadata: { bulletCount: 10 },
+          rotated: false,
+        },
+      },
+    ],
+    metadata: {},
+  },
+  pockets: [
+    {
+      slot: 0,
+      item: {
+        id: 7987654321,
+        name: 'fish',
+        metadata: { dead: false },
+        rotated: false,
+      },
+    },
+    {
+      slot: 3,
+      item: {
+        id: 2367895489,
+        name: 'WEAPON_FLASHLIGHT',
+        attachments: {},
+        metadata: { battery: true },
+        rotated: true,
+      },
+    },
+  ],
+  front: {
+    id: 6789564644,
+    name: 'WEAPON_SNIPERRIFLE',
+    attachments: {},
+    metadata: {},
+  },
+  back: {
+    id: 1234567890,
+    name: 'WEAPON_CARBINERIFLE',
+    attachments: {},
+    metadata: {},
+  },
+  hands: {
+    id: 894748444,
+    name: 'burger',
+    metadata: { toppings: ['bun', 'patty', 'lettuce', 'bun'] },
+  },
+  mask: {
+    id: 75458999,
+    name: 'CLOTHING_CLOWNMASK',
+    clothingData: {
+      type: 0,
+      component: 4,
+      drawable: 68,
+      texture: 86,
+    },
+    metadata: {},
+  },
+  gloves: {
+    id: 75688534,
+    name: 'CLOTHING_WHITEGLOVES',
+    clothingData: {
+      type: 0,
+      component: 5,
+      drawable: 67,
+      texture: 0,
+    },
+    metadata: {},
+  },
+  shoes: {
+    id: 74439837436,
+    name: 'CLOTHING_AIRFORCESHOES',
+    clothingData: {
+      type: 0,
+      component: 6,
+      drawable: 22,
+      texture: 1,
+    },
+    metadata: {},
+  },
+  neckwear: {
+    id: 32135545445,
+    name: 'CLOTHING_TIE',
+    clothingData: {
+      type: 0,
+      component: 7,
+      drawable: 87,
+      texture: 2,
+    },
+    metadata: {},
+  },
+  headwear: {
+    id: 5656588565,
+    name: 'CLOTHING_BUCKETHAT',
+    clothingData: {
+      type: 1,
+      component: 2,
+      drawable: 3,
+      texture: 0,
+    },
+    metadata: {},
+  },
+  eyewear: {
+    id: 23123213123,
+    name: 'CLOTHING_SUNGLASSES',
+    clothingData: {
+      type: 1,
+      component: 3,
+      drawable: 1,
+      texture: 2,
+    },
+    metadata: {},
+  },
+  earwear: {
+    id: 767646575565,
+    name: 'CLOTHING_HEADPHONES',
+    clothingData: {
+      type: 1,
+      component: 4,
+      drawable: 3,
+      texture: 0,
+    },
+    metadata: {},
+  },
+  leftwrist: {
+    id: 7545454343,
+    name: 'CLOTHING_GOLDWATCH',
+    clothingData: {
+      type: 1,
+      component: 5,
+      drawable: 8,
+      texture: 0,
+    },
+    metadata: {},
+  },
+  rightwrist: {
+    id: 4346565777,
+    name: 'CLOTHING_BANGLE',
+    clothingData: {
+      type: 1,
+      component: 6,
+      drawable: 54,
+      texture: 9,
+    },
+    metadata: {},
+  },
+};
+
 
 let front = {
   id: 6789564644,
@@ -226,7 +513,7 @@ let bag = {
 
 function unequip(source, item) {
   console.log(Object.keys(ItemBaseData).length)
-  if (source.hasOwnProperty("inventory")) {
+  if (source.hasOwnProperty("inventory")) { // Check if the object has an inventory
     const inventory = source.inventory;
     for (let i = 0; i < inventory.length; i++) {
       if (inventory[i].item.name === item.name) {
@@ -238,11 +525,11 @@ function unequip(source, item) {
       }
     }
     console.log(`${item.name} is not in ${source.name}'s inventory`);
-  } else {
+  } else { // If the slot does not have an inventory
     console.log(`${source.name} is being emptied`);
     Object.keys(source).forEach((key) => delete source[key]);
   }
-  // pushing the item the ground for now
+  // pushing the item to the ground for now
   ItemBaseData[item.name] = {
     ...item
   }
@@ -260,9 +547,9 @@ let obj = {
 // unequip(bag, obj);
 
 function canEquip(destination, item) {
-  if (destination.hasOwnProperty("clothingData")) {
+  if (destination.hasOwnProperty("clothingData")) { // If the destination is one of the clothing items with inventory
     if (destination.inventory[0].hasOwnProperty("size")) {
-      const limit = 20;
+      const limit = 20; // based on [5,4] slots
       let itemSize = item.size[0] * item.size[1];
       let current_capacity = null;
       const inventory = destination.inventory;
@@ -280,7 +567,7 @@ function canEquip(destination, item) {
     }
   } else {
     // pockets
-    const limit = 10;
+    const limit = 10; // Based on [5,2] slots
     let itemSize = item.size[0] * item.size[1];
     let current_capacity = null;
     const inventory = destination.inventory;
@@ -297,33 +584,33 @@ function canEquip(destination, item) {
 
 // console.log(canEquip(bag, obj));
 
-function equip(src, item, dest) {
+function equip(mainObj,source, item, destination) {
+  let src = mainObj[source]
+  let dest = mainObj[destination]
   console.log(src);
   console.log(item);
   console.log(dest);
   console.log("BEFORE EQUIPING");
-  if (dest.hasOwnProperty("inventory")) {
-    if (canEquip(dest, item)) {
+  if (dest.hasOwnProperty("inventory")) { // Check if slot has inventory
+    if (canEquip(dest, item)) { // Check if it has spacce
       dest.inventory = [...dest.inventory, { ...item }];
       console.log("inside");
       unequip(src, item);
     } else {
       alert("NO SPACE");
     }
-  } else {
+  } else { // Equiping an item with no inventory
     let isEmpty = true;
-    for (const prop in dest) {
+    for (const prop in dest) { // Check if the object is empty
       isEmpty = false;
       break;
     }
     if (isEmpty) {
-      //   unequip(src, item);
       for (const prop in item) {
-        dest[prop] = item[prop];
+        dest[prop] = item[prop]; // Equip directly
       }
     } else {
-      // unequip(src, item);
-      unequip(dest, item);
+      unequip(dest, item); // remove the existing data and push new item data
       for (const prop in item) {
         dest[prop] = item[prop];
       }
@@ -342,5 +629,5 @@ let hands =  {
   metadata: { toppings: ['bun', 'patty', 'lettuce', 'bun'] },
 }
 
-equip(front, back, hands);
+equip(dummyPlayerInventory,"front", back, "hands");
 

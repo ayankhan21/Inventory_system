@@ -10,7 +10,7 @@ const ContextMenu = (props) => {
   const [search, setSearch] = useState(false);
   const inventoryData = useSelector(state => state.inventory.inventoryState);
   const contextData = inventoryData[props.data];
-  console.log(contextData);
+  // console.log(contextData);
   
   useEffect(() => {
     if (contextData && contextData.hasOwnProperty('inventory')) {

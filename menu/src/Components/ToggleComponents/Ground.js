@@ -1,8 +1,27 @@
-import React from "react";
 import "../../App.css";
-import { ItemBaseData } from "../../dummydata";
+import { useSelector } from "react-redux";
 
-const Ground = () => {
+
+const Ground = ({setDestination, setItem, setSource }) => {
+
+  const otherData = useSelector(state => state.inventory.ground)
+
+  const handleDragStart = (source, item) => {
+    setSource(source);
+    setItem(item);
+  };
+
+  const handleDragEnd = (destination) => {
+    setDestination(destination);
+
+    // Dispatch your action here or call the equip function with the updated source, item, and destination values
+    // equip(source, item, destination);
+
+    // Reset the source, item, and destination values
+    // setSource(null);
+    // setItem(null);
+    // setDestination(null);
+  };
   const calculateSize = (arr) => {
     const width = arr[0] * 30;
     const height = arr[1] * 30;
@@ -10,11 +29,15 @@ const Ground = () => {
   };
 
   return (
-    <div className="ground">
-      {Object.values(ItemBaseData).map((item) => (
+    <div onDragLeave={() => handleDragEnd(otherData)} className="ground">
+      {Object.values(otherData).map((item) => (
         <div
           key={item.id} // add a unique key prop for each item
           draggable
+          onDragStart={() =>
+            handleDragStart(otherData, item)
+          }
+          
           className="groundItems"
           style={calculateSize(item.size)} // set width and height using the helper function
         >

@@ -1,78 +1,195 @@
-import {useState} from "react";
+import { useState } from "react";
 import "../App.css";
 import { useDispatch } from "react-redux";
-import ContextMenu from "./ContextMenu";
+import { equipItem } from "../redux/InventoryActions";
+// import ContextMenu from "./ContextMenu";
 
-const Gear = (props) => {
-  const [preview,setPreview] = useState(false)
+const Gear = ({
+  data,
+  setDestination,
+  setItem,
+  setSource,
+  source,
+  item,
+  destination,
+}) => {
+  // const [source, setSource] = useState(null);
+  // const [item, setItem] = useState(null);
+  // const [destination, setDestination] = useState(null);
+  // console.log(data)
+  const dispatch = useDispatch();
 
-  // const handlePreview = (event) = >{
+  const handleDragStart = (source, item) => {
+    console.log("SETTING SOURCE AND ITEM FROM GEAR");
+    setSource(source);
+    setItem(item);
+  };
 
-  // }
+  const handleDragEnd = (destination) => {
+    console.log("SETTING DESTINATION FROM GEAR");
 
-  const [gearData, setGearData] = useState(props.data);
+    setDestination(destination);
+    // dispatch(equipItem(props.data,source,item,destination))
+
+    // Dispatch your action here or call the equip function with the updated source, item, and destination values
+
+    // Reset the source, item, and destination values
+    // setSource(null);
+    // setItem(null);
+    // setDestination(null);
+  };
+
+  const [gearData, setGearData] = useState(data);
   return (
     <div className="gear box">
-      <div draggable className="headwear miniBoxes">      
+      <div
+        onDragLeave={() => handleDragEnd(gearData.headwear)}
+        className="headwear miniBoxes"
+      >
         <span>Headwear</span>
-        <p>{gearData && gearData.headwear.name}</p>
+        <p
+          draggable
+          onDragStart={() =>
+            handleDragStart(gearData.headwear, gearData.headwear)
+          }
+        >
+          {gearData && gearData.headwear.name}
+        </p>
         {/* <ContextMenu data={gearData}/> */}
       </div>
-      <div draggable className="layer">
-        <div className="earwear miniBoxes">
+      <div className="layer">
+        <div onDragEnd={() => handleDragEnd(gearData.earwear)} className="earwear miniBoxes">
           <span>Earwear</span>
-          {gearData && gearData.earwear.name}
-        {/* <ContextMenu data={gearData}/> */}
-          
+          <p
+            draggable
+            onDragStart={() =>
+              handleDragStart(gearData.earwear, gearData.earwear)
+            }
+            
+          >
+            {gearData && gearData.earwear.name}
+          </p>
+          {/* <ContextMenu data={gearData}/> */}
         </div>
-        <div draggable className="mask miniBoxes">
+        <div onDragLeave={() => handleDragEnd(gearData.mask)} className="mask miniBoxes">
           <span>Mask</span>
-          {gearData && gearData.mask.name}
+          <p
+            draggable
+            onDragStart={() => handleDragStart(gearData.mask, gearData.mask)}
+            
+          >
+            {gearData && gearData.mask.name}
+          </p>
         </div>
-        <div draggable className="eyewear miniBoxes">
+        <div onDragLeave={() => handleDragEnd(gearData.eyewear)} className="eyewear miniBoxes">
           <span>Eyewear</span>
-          {gearData && gearData.eyewear.name}
+          <p
+            draggable
+            onDragStart={() =>
+              handleDragStart(gearData.eyewear, gearData.eyewear)
+            }
+            
+          >
+            {gearData && gearData.eyewear.name}
+          </p>
         </div>
       </div>
       <div className="layer">
-        <div draggable className="leftWrist miniBoxes">
+        <div onDragLeave={() => handleDragEnd(gearData.leftwrist)} className="leftWrist miniBoxes">
           <span>Left Wrist</span>
-          {gearData && gearData.leftwrist.name}
+          <p
+            draggable
+            onDragStart={() =>
+              handleDragStart(gearData.leftwrist, gearData.leftwrist)
+            }
+            
+          >
+            {gearData && gearData.leftwrist.name}
+          </p>
         </div>
-        <div draggable className="neckwear miniBoxes">
+        <div onDragLeave={() => handleDragEnd(gearData.neckwear)} className="neckwear miniBoxes">
           <span>Neckwear</span>
-          {gearData && gearData.neckwear.name}
+          <p
+            draggable
+            onDragStart={() =>
+              handleDragStart(gearData.neckwear, gearData.neckwear)
+            }
+            
+          >
+            {gearData && gearData.neckwear.name}
+          </p>
         </div>
-        <div draggable className="rightWrist miniBoxes">
+        <div onDragLeave={() => handleDragEnd(gearData.rightwrist)} className="rightWrist miniBoxes">
           <span>Right Wrist</span>
-          {gearData && gearData.rightwrist.name}
+          <p
+            draggable
+            onDragStart={() =>
+              handleDragStart(gearData.rightwrist, gearData.rightwrist)
+            }
+            
+          >
+            {gearData && gearData.rightwrist.name}
+          </p>
         </div>
       </div>
       <div className="layer">
-        <div draggable className="gloves miniBoxes">
+        <div onDragLeave={() => handleDragEnd(gearData.gloves)} className="gloves miniBoxes">
           <span>Gloves</span>
-          {gearData && gearData.gloves.name}
+          <p
+            draggable
+            onDragStart={() =>
+              handleDragStart(gearData.gloves, gearData.gloves)
+            }
+            
+          >
+            {gearData && gearData.gloves.name}
+          </p>
         </div>
-        <div draggable className="shoes miniBoxes">
+        <div onDragLeave={() => handleDragEnd(gearData.shoes)} className="shoes miniBoxes">
           <span>Shoes</span>
-          {gearData && gearData.shoes.name}
+          <p
+            draggable
+            onDragStart={() => handleDragStart(gearData.shoes, gearData.shoes)}
+            
+          >
+            {gearData && gearData.shoes.name}
+          </p>
         </div>
       </div>
-      <div className="layer lower">
-        <div draggable className="front miniBoxes">
+      <div onDragLeave={() => handleDragEnd(gearData.front)} className="layer lower">
+        <div className="front miniBoxes">
           <span>Front</span>
-          <p>{gearData && gearData.front.name}</p>
+          <p
+            draggable
+            onDragStart={() => handleDragStart(gearData.front, gearData.front)}
+            
+          >
+            {gearData && gearData.front.name}
+          </p>
         </div>
-        <div draggable className="hands miniBoxes">
+        <div  className="hands miniBoxes">
           <span>Hands</span>
-          {gearData && gearData.hands.name}
-          {gearData && gearData.hands.metadata.toppings.map((e)=>{
-            return <p>{e}</p>
-          })}
+          <div
+            draggable
+            onDragStart={() => handleDragStart(gearData.hands, gearData.hands)}
+            
+          >
+            {gearData && gearData.hands.name}
+            {gearData &&
+              gearData.hands.metadata.toppings.map((e) => {
+                return <p>{e}</p>;
+              })}
+          </div>
         </div>
-        <div draggable className="back miniBoxes">
+        <div onDragLeave={() => handleDragEnd(gearData.back)} className="back miniBoxes">
           <span>Back</span>
-          <p>{gearData && gearData.back.name}</p>
+          <p
+            draggable
+            onDragStart={() => handleDragStart(gearData.back, gearData.back)}
+            
+          >
+            {gearData && gearData.back.name}
+          </p>
         </div>
       </div>
     </div>
