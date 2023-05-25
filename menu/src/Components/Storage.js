@@ -4,7 +4,7 @@ import Ground from "./ToggleComponents/Ground";
 import PlayerInventory from "./ToggleComponents/PlayerInventory";
 import Furniture from "./ToggleComponents/Furniture";
 
-const Storage = ({ data, setDestination, setItem, setSource ,source,item,destination }) => {
+const Storage = ({ data, setDestination, setItem, setSource ,source,item,destination,setDestinationObj,setSourceObj }) => {
   const [option, setOption] = useState("Player Inventory");
 
   const handleSelect = (e) => {
@@ -28,7 +28,7 @@ const Storage = ({ data, setDestination, setItem, setSource ,source,item,destina
           <option value="Furniture">Furniture</option>
         </select>
         {option === "Player Inventory" ? <input type="text" placeholder="Search" name="" id="" /> : null}
-        <Component source={source} item={item} destination={destination} setSource={setSource} setItem={setItem} setDestination={setDestination} />
+        <Component source={source} item={item} setSourceObj={setSourceObj} setDestinationObj={setDestinationObj} destination={destination} setSource={setSource} setItem={setItem} setDestination={setDestination} />
       </div>
   );
 };

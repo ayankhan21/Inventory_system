@@ -14,9 +14,9 @@ export const getPlayerInventory = (payload) => ({
   payload: payload,
 })
 
-export const equipItem = (source, item, destination) => ({
+export const equipItem = (sourceObj,source, item,destinationObj,destination) => ({
   type: EQUIP_ITEM,
-  payload: { source, item, destination },
+  payload: { source,sourceObj, item,destinationObj, destination },
 })
 
 export const unequipItem = (source, item) => ({

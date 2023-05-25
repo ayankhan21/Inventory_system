@@ -1,26 +1,47 @@
 import "../App.css";
-import { useDispatch } from "react-redux";
-import Icon from "@mdi/react";
-import { mdiMenuLeft } from "@mdi/js";
 import { useState } from "react";
 import ContextMenu from "./ContextMenu";
+import { useDispatch } from "react-redux";
+import { equipItem } from "../redux/InventoryActions";
 
-const Inventory = ({ data, setDestination, setItem, setSource }) => {
+const Inventory = ({
+  data,
+  setDestination,
+  setItem,
+  source,
+  destination,
+  item,
+  setSource,
+  setDestinationObj,
+  setSourceObj,
+  sourceObj,
+  destinationObj,
+  obj
+}) => {
+  const dispatch = useDispatch();
   const [inventoryData, setInventoryData] = useState(data);
   const [visibleItem, setVisibleItem] = useState(null);
 
   const handleDragStart = (source, item) => {
-    console.log("SETTING SOURCE AND ITEM FROM INVENTORY")
+    console.log("SETTING SOURCE AND ITEM FROM INVENTORY");
     setSource(source);
+    if(obj){
+      setSourceObj('otherPlayer')
+    }
+    setSourceObj('inventoryState')
     setItem(item);
   };
 
-  const handleDragEnd = (destination) => {
-    console.log("SETTING DESTINATION FROM INVENTORY")
-    setDestination(destination);
+  const handleDragEnd = (dest) => {
+    console.log("SETTING DESTINATION FROM INVENTORY");
+    if(obj){
+      setDestinationObj("otherPlayer")
+    }
+    setDestinationObj('inventoryState')
+    setDestination(dest);
 
     // Dispatch your action here or call the equip function with the updated source, item, and destination values
-    // equip(source, item, destination);
+    // dispatch(equipItem(sourceObj,source,item,destinationObj,destination))
 
     // Reset the source, item, and destination values
     // setSource(null);
@@ -35,10 +56,14 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
       setVisibleItem(itemName);
     }
   };
+  console.log(obj)
   return (
     <div className="inventory box">
       <div className="mainShirt">
-        <div onDragLeave={() => handleDragEnd(inventoryData.shirt)} className="shirt miniBoxes">
+        <div
+          onDragLeave={() => handleDragEnd(inventoryData.shirt)}
+          className="shirt miniBoxes"
+        >
           <span onClick={() => toggleVisibility("shirt")}>Shirt</span>
           <p
             draggable
@@ -49,7 +74,11 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
             {inventoryData && inventoryData.shirt.name}
           </p>
         </div>
-        <div onDragLeave={() => handleDragEnd(inventoryData.shirt.inventory)} hidden={visibleItem !== "shirt"} className="shirtStorage">
+        <div
+          onDragLeave={() => handleDragEnd(inventoryData.shirt.inventory)}
+          hidden={visibleItem !== "shirt"}
+          className="shirtStorage"
+        >
           <div className="shirtItems">
             <div>
               {inventoryData &&
@@ -63,7 +92,6 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
                           inventoryData.shirt.inventory[index]
                         )
                       }
-                      
                       className="items"
                       key={index}
                     >
@@ -77,7 +105,10 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
         </div>
       </div>
       <div className="mainPants">
-        <div onDragLeave={() => handleDragEnd(inventoryData.pants)} className="pants miniBoxes">
+        <div
+          onDragLeave={() => handleDragEnd(inventoryData.pants)}
+          className="pants miniBoxes"
+        >
           <span onClick={() => toggleVisibility("pants")}>Pants</span>
           <p
             draggable
@@ -89,14 +120,20 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
           </p>
         </div>
         <div hidden={visibleItem !== "pants"} className="pantsStorage">
-          <div onDragLeave={() => handleDragEnd(inventoryData.pants.inventory)}  className="pantItems">
+          <div
+            onDragLeave={() => handleDragEnd(inventoryData.pants.inventory)}
+            className="pantItems"
+          >
             {inventoryData &&
               inventoryData.pants.inventory.map((e, index) => {
                 return (
                   <p
                     draggable
                     onDragStart={() =>
-                      handleDragStart(inventoryData.pants, inventoryData.pants.inventory[index])
+                      handleDragStart(
+                        inventoryData.pants,
+                        inventoryData.pants.inventory[index]
+                      )
                     }
                     // onDragLeave={() => handleDragEnd(inventoryData.shirt)}
                     className="items"
@@ -111,7 +148,10 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
         </div>
       </div>
       <div className="mainBag">
-        <div onDragLeave={() => handleDragEnd(inventoryData.bag)} className="bag miniBoxes">
+        <div
+          onDragLeave={() => handleDragEnd(inventoryData.bag)}
+          className="bag miniBoxes"
+        >
           <span onClick={() => toggleVisibility("bag")}>Bag</span>
           <p
             draggable
@@ -123,16 +163,21 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
           </p>
         </div>
         <div hidden={visibleItem !== "bag"} className="bagStorage">
-          <div onDragLeave={() => handleDragEnd(inventoryData.bag.inventory)} className="bagItems">
+          <div
+            onDragLeave={() => handleDragEnd(inventoryData.bag.inventory)}
+            className="bagItems"
+          >
             {inventoryData &&
               inventoryData.bag.inventory.map((e, index) => {
                 return (
                   <p
                     draggable
                     onDragStart={() =>
-                      handleDragStart(inventoryData.bag, inventoryData.bag.inventory[index])
+                      handleDragStart(
+                        inventoryData.bag,
+                        inventoryData.bag.inventory[index]
+                      )
                     }
-                   
                     className="items"
                     key={index}
                   >
@@ -144,19 +189,25 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
         </div>
       </div>
       <div className="mainVest">
-        <div onDragLeave={() => handleDragEnd(inventoryData.bag)} className="vest miniBoxes">
+        <div
+          onDragLeave={() => handleDragEnd(inventoryData.bag)}
+          className="vest miniBoxes"
+        >
           <span onClick={() => toggleVisibility("vest")}>Vest</span>
           <p
             draggable
             onDragStart={() =>
               handleDragStart(inventoryData.bag, inventoryData.bag)
             }
-            
           >
             {inventoryData && inventoryData.vest.name}
           </p>
         </div>
-        <div onDragLeave={() => handleDragEnd(inventoryData.bag.inventory)} hidden={visibleItem !== "vest"} className="vestStorage">
+        <div
+          onDragLeave={() => handleDragEnd(inventoryData.bag.inventory)}
+          hidden={visibleItem !== "vest"}
+          className="vestStorage"
+        >
           <div className="vestItems">
             {inventoryData &&
               inventoryData.vest.inventory.map((e, index) => {
@@ -164,9 +215,11 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
                   <p
                     draggable
                     onDragStart={() =>
-                      handleDragStart(inventoryData.bag, inventoryData.bag.inventory[index])
+                      handleDragStart(
+                        inventoryData.bag,
+                        inventoryData.bag.inventory[index]
+                      )
                     }
-                    
                     className="items"
                     key={index}
                   >
@@ -180,16 +233,21 @@ const Inventory = ({ data, setDestination, setItem, setSource }) => {
 
       <div className="pockets">
         <span>Pockets</span>
-        <div onDragLeave={() => handleDragEnd(inventoryData.pockets)} className="pocketsStorage">
+        <div
+          onDragLeave={() => handleDragEnd(inventoryData.pockets)}
+          className="pocketsStorage"
+        >
           {inventoryData &&
-            inventoryData.pockets.map((e,index) => {
+            inventoryData.pockets.map((e, index) => {
               return (
                 <p
                   draggable
                   onDragStart={() =>
-                    handleDragStart(inventoryData.pockets, inventoryData.pockets[index])
+                    handleDragStart(
+                      inventoryData.pockets,
+                      inventoryData.pockets[index]
+                    )
                   }
-                  
                   className="items"
                 >
                   {e.item.name}

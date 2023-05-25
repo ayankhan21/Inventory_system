@@ -1,20 +1,18 @@
 import { useSelector } from 'react-redux';
 import '../../App.css'
-import { useState } from 'react';
 
-const Furniture = () => {
+const Furniture = (setDestination, setItem, setSource,setDestinationObj,setSourceObj ) => {
   const furnitureData = useSelector(state => state.inventory.furniture)
-  const [source, setSource] = useState(null);
-  const [item, setItem] = useState(null);
-  const [destination, setDestination] = useState(null);
 
   const handleDragStart = (source, item) => {
     setSource(source);
+    setSourceObj('furniture')
     setItem(item);
   };
 
   const handleDragEnd = (destination) => {
     setDestination(destination);
+    setDestinationObj('furniture')
 
     // Dispatch your action here or call the equip function with the updated source, item, and destination values
     // equip(source, item, destination);

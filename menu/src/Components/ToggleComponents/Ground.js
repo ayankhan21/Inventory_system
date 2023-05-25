@@ -2,17 +2,19 @@ import "../../App.css";
 import { useSelector } from "react-redux";
 
 
-const Ground = ({setDestination, setItem, setSource }) => {
+const Ground = ({setDestination, setItem, setSource,setDestinationObj,setSourceObj }) => {
 
   const otherData = useSelector(state => state.inventory.ground)
 
   const handleDragStart = (source, item) => {
     setSource(source);
+    setSourceObj('ground')
     setItem(item);
   };
 
   const handleDragEnd = (destination) => {
     setDestination(destination);
+    setDestinationObj('ground');
 
     // Dispatch your action here or call the equip function with the updated source, item, and destination values
     // equip(source, item, destination);

@@ -5,11 +5,11 @@ import {
   GET_PLAYER_INVENTORY,
   EQUIP_ITEM,
   UNEQUIP_ITEM,
-  OPEN_CONTAINER,
-  CLOSE_CONTAINER,
+  // OPEN_CONTAINER,
+  // CLOSE_CONTAINER,
   EMPTY_CONTAINER,
-  INSPECT_ITEM,
-  SEARCH_INVENTORY,
+  // INSPECT_ITEM,
+  // SEARCH_INVENTORY,
 } from "./InventoryTypes";
 
 const INITIAL_STATE = {
@@ -17,9 +17,6 @@ const INITIAL_STATE = {
   ground: { ...ItemBaseData },
   otherPlayer: {},
   furniture: { ...ItemBaseData },
-  source: null,
-  item: null,
-  destination: null,
 };
 
 function unequip(mainObj,source, item) {
@@ -98,49 +95,44 @@ function canEquip(destination, item) {
 
 // console.log(canEquip(bag, obj));
 
-function equip(mainObj, source, item, destination) {
-  let updatedObj = {...mainObj}
-  let src = updatedObj[source];
-  let dest = updatedObj[destination];
-  console.log(src);
+function equip(sourceObj,src, item,destinationObj,dest) {
+  let updatedSource = {...sourceObj}
+  let updatedDestination = {...destinationObj}
+  console.log(updatedSource[src]);
   console.log(item);
-  console.log(dest);
+  console.log(updatedDestination[dest]);
   console.log("BEFORE EQUIPING");
-  if (dest.hasOwnProperty("inventory")) {
-    // Check if slot has inventory
-    if (canEquip(dest, item)) {
-      // Check if it has spacce
-      dest.inventory = [...dest.inventory, { ...item }];
+  if (updatedDestination[dest].hasOwnProperty("inventory")) { // Check if slot has inventory
+    if (canEquip(updatedDestination[dest], item)) { // Check if it has spacce
+      updatedDestination[dest].inventory = [...dest.inventory, { ...item }];
       console.log("inside");
-      unequip(src, item);
+      unequip(updatedSource[src], item);
     } else {
       alert("NO SPACE");
     }
-  } else {
-    // Equiping an item with no inventory
+  } else { // Equiping an item with no inventory
     let isEmpty = true;
-    for (const prop in dest) {
-      // Check if the object is empty
+    for (const prop in dest) { // Check if the object is empty
       isEmpty = false;
       break;
     }
     if (isEmpty) {
       for (const prop in item) {
-        dest[prop] = item[prop]; // Equip directly
+        updatedDestination[dest][prop] = item[prop]; // Equip directly
       }
     } else {
-      unequip(dest, item); // remove the existing data and push new item data
+      unequip(updatedDestination[dest], item); // remove the existing data and push new item data
       for (const prop in item) {
-        dest[prop] = item[prop];
+        updatedDestination[dest][prop] = item[prop];
       }
     }
   }
-  unequip(src, item);
-  return updatedObj;
-  console.log(src);
-  console.log(item);
-  console.log(dest);
+  unequip(updatedSource[src], item);
   console.log("AFTER EQUIPING");
+  console.log(updatedSource[src]);
+  console.log(item);
+  console.log(updatedDestination[dest]);
+  return {updatedSource,updatedDestination}
 }
 
 let hands = {
@@ -158,12 +150,20 @@ const inventoryReducer = (state = INITIAL_STATE, action) => {
         ...state,
         inventoryState: action.payload,
       };
-    case EQUIP_ITEM:
-      // equip() with the parameters
-      return {
-        ...state,
-        // inventoryState: {}, update the state with equips result
-      };
+      case EQUIP_ITEM: {
+        const { source, sourceObj, item, destinationObj, destination } = action.payload;
+        // Call the equip function with the payload variables
+        const { updatedSource, updatedDestination } = equip(state[sourceObj], source, item, state[destinationObj], destination);
+        
+        return {
+          ...state,
+          // Update the corresponding properties in the state
+          [sourceObj]: updatedSource,
+          [destinationObj]: updatedDestination
+        };
+      }
+      
+      
     case UNEQUIP_ITEM:
       // unequip() with the parameters
       return {

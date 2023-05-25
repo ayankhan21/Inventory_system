@@ -10,7 +10,9 @@ import { getPlayerInventory } from "./redux/InventoryActions";
 function App() {
 
   const [source, setSource] = useState(null);
+  const [sourceObj,setSourceObj] = useState(null);
   const [item, setItem] = useState(null);
+  const [destinationObj,setDestinationObj] = useState(null)
   const [destination, setDestination] = useState(null);
 
 
@@ -27,14 +29,16 @@ function App() {
   //   });
   // },[]);
   console.log(source,"source")
+  console.log(sourceObj,"SpurceObj")
   console.log(item,"item")
   console.log(destination,"Destination")
+  console.log(destinationObj,"destinationObj")
 
   return (
     <div className="menu">
-      <Gear source={source} item={item} destination={destination} setSource={setSource} setItem={setItem} setDestination={setDestination}  data={playerInventory} />
-      <Inventory source={source} item={item} destination={destination} setSource={setSource} setItem={setItem} setDestination={setDestination}  data={playerInventory} />
-      <Storage source={source} item={item} destination={destination} setSource={setSource} setItem={setItem} setDestination={setDestination}  data={otherData} />
+      <Gear source={source} item={item} destination={destination} setSource={setSource} setSourceObj={setSourceObj} setDestinationObj={setDestinationObj} setItem={setItem} setDestination={setDestination}  data={playerInventory} />
+      <Inventory source={source} item={item} destination={destination} setSource={setSource} setSourceObj={setSourceObj} setDestinationObj={setDestinationObj} setItem={setItem} setDestination={setDestination}  data={playerInventory} />
+      <Storage source={source} item={item} destination={destination} setSource={setSource} setItem={setItem} setSourceObj={setSourceObj} setDestinationObj={setDestinationObj} setDestination={setDestination}  data={otherData} />
     </div>
   );
 }

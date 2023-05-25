@@ -8,10 +8,15 @@ const Gear = ({
   data,
   setDestination,
   setItem,
-  setSource,
   source,
-  item,
   destination,
+  item,
+  setSource,
+  setDestinationObj,
+  setSourceObj,
+  sourceObj,
+  destinationObj,
+  obj
 }) => {
   // const [source, setSource] = useState(null);
   // const [item, setItem] = useState(null);
@@ -22,11 +27,19 @@ const Gear = ({
   const handleDragStart = (source, item) => {
     console.log("SETTING SOURCE AND ITEM FROM GEAR");
     setSource(source);
+    if(obj){
+      setSourceObj('otherPlayer')
+    }
+    setSourceObj('inventoryState')
     setItem(item);
   };
 
   const handleDragEnd = (destination) => {
     console.log("SETTING DESTINATION FROM GEAR");
+    if(obj){
+      setDestinationObj("otherPlayer")
+    }
+    setDestinationObj('inventoryState')
 
     setDestination(destination);
     // dispatch(equipItem(props.data,source,item,destination))

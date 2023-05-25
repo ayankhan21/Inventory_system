@@ -584,18 +584,18 @@ function canEquip(destination, item) {
 
 // console.log(canEquip(bag, obj));
 
-function equip(mainObj,source, item, destination) {
-  let src = mainObj[source]
-  let dest = mainObj[destination]
-  console.log(src);
+function equip(sourceObj,src, item,destinationObj,dest) {
+  let updatedSource = {...sourceObj}
+  let updatedDestination = {...destinationObj}
+  console.log(updatedSource[src]);
   console.log(item);
-  console.log(dest);
+  console.log(updatedDestination[dest]);
   console.log("BEFORE EQUIPING");
-  if (dest.hasOwnProperty("inventory")) { // Check if slot has inventory
-    if (canEquip(dest, item)) { // Check if it has spacce
-      dest.inventory = [...dest.inventory, { ...item }];
+  if (updatedDestination[dest].hasOwnProperty("inventory")) { // Check if slot has inventory
+    if (canEquip(updatedDestination.dest, item)) { // Check if it has spacce
+      updatedDestination[dest].inventory = [...dest.inventory, { ...item }];
       console.log("inside");
-      unequip(src, item);
+      unequip(updatedSource[src], item);
     } else {
       alert("NO SPACE");
     }
@@ -607,20 +607,21 @@ function equip(mainObj,source, item, destination) {
     }
     if (isEmpty) {
       for (const prop in item) {
-        dest[prop] = item[prop]; // Equip directly
+        updatedDestination[dest][prop] = item[prop]; // Equip directly
       }
     } else {
-      unequip(dest, item); // remove the existing data and push new item data
+      unequip(updatedDestination[dest], item); // remove the existing data and push new item data
       for (const prop in item) {
-        dest[prop] = item[prop];
+        updatedDestination[dest][prop] = item[prop];
       }
     }
   }
-  unequip(src, item);
-  console.log(src);
-  console.log(item);
-  console.log(dest);
+  unequip(updatedSource[src], item);
   console.log("AFTER EQUIPING");
+  console.log(updatedSource[src]);
+  console.log(item);
+  console.log(updatedDestination[dest]);
+  return {updatedSource,updatedDestination}
 }
 
 let hands =  {
@@ -629,5 +630,5 @@ let hands =  {
   metadata: { toppings: ['bun', 'patty', 'lettuce', 'bun'] },
 }
 
-equip(dummyPlayerInventory,"front", back, "hands");
+equip(dummyPlayerInventory,"front", dummyPlayerInventory.front,dummyPlayerInventory,"back");
 

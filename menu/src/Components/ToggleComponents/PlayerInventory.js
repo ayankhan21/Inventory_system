@@ -4,10 +4,11 @@ import Gear from "../Gear";
 import Inventory from "../Inventory";
 
 const PlayerInventory = () => {
+
   return (
     <div className="playerInventory">
-      <Gear className="toggleGear"/>
-      <Inventory className="toggleInventory"/>
+      <Gear obj={'otherPlayer'} className="toggleGear"/>
+      <Inventory obj={'otherPlayer'} className="toggleInventory"/>
     </div>
   );
 };
